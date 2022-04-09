@@ -109,11 +109,12 @@
 <p>权限 </p>
 <p>开放80端口 <a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/738083">https://developer.aliyun.com/article/738083</a></p>
 <p>重新加载nginx配置文件并启动<br>nginx -s reload<br>nginx -s stop<br>ps -ef | grep nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/sh</span></span><br><span class="line"></span><br><span class="line">while read oldrev newrev refname</span><br><span class="line">do</span><br><span class="line">    branch=$(git rev-parse --symbolic --abbrev-ref $refname)</span><br><span class="line">    if [ &quot;origin&quot; = &quot;$branch&quot; ]; then</span><br><span class="line">        git --git-dir=`pwd` --work-tree=/path/to/html reset --hard origin</span><br><span class="line">    fi</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snorlaxse.github.io/2022/03/28/hexo-from-github-2-aliyun/" data-id="cl1rahwds0001bpb14y8tcwm3" class="article-share-link">
+      <a data-url="http://snorlaxse.github.io/2022/03/28/hexo-from-github-2-aliyun/" data-id="cl1rb4fva0000wfb1etzx1yt3" class="article-share-link">
         分享
       </a>
       
@@ -178,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snorlaxse.github.io/2022/03/28/hello-world/" data-id="cl1rahwdp0000bpb1fgmkbfjh" class="article-share-link">
+      <a data-url="http://snorlaxse.github.io/2022/03/28/hello-world/" data-id="cl1rb4fvf0001wfb107aidp7b" class="article-share-link">
         分享
       </a>
       
