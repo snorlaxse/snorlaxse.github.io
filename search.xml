@@ -23,10 +23,9 @@
   <entry>
     <title>hexo-from-github-2-aliyun</title>
     <url>/2022/03/28/hexo-from-github-2-aliyun/</url>
-    <content><![CDATA[<p><img src="/2022/03/28/hexo-from-github-2-aliyun/cover.jpg"></p>
+    <content><![CDATA[<h2 id="基础教程"><a href="#基础教程" class="headerlink" title="基础教程"></a>基础教程</h2><p><a href="https://zhuanlan.zhihu.com/p/26625249">GitHub+Hexo 搭建个人网站详细教程</a><br><a href="https://zhuanlan.zhihu.com/p/58654392">Hexo 从 GitHub 到阿里云</a><br><a href="https://zhuanlan.zhihu.com/p/120743882">将hexo个人博客部署到个人云服务器–最详细踩坑教程</a></p>
 <span id="more"></span> 
 
-<h2 id="基础教程"><a href="#基础教程" class="headerlink" title="基础教程"></a>基础教程</h2><p><a href="https://zhuanlan.zhihu.com/p/26625249">GitHub+Hexo 搭建个人网站详细教程</a><br><a href="https://zhuanlan.zhihu.com/p/58654392">Hexo 从 GitHub 到阿里云</a><br><a href="https://zhuanlan.zhihu.com/p/120743882">将hexo个人博客部署到个人云服务器–最详细踩坑教程</a></p>
 <h2 id="踩坑指南"><a href="#踩坑指南" class="headerlink" title="踩坑指南"></a>踩坑指南</h2><h3 id="无法访问"><a href="#无法访问" class="headerlink" title="无法访问"></a>无法访问</h3><p>开放80端口 <a href="https://developer.aliyun.com/article/738083">https://developer.aliyun.com/article/738083</a></p>
 <p>重新加载nginx配置文件并启动<br>nginx -s reload<br>nginx -s stop<br>ps -ef | grep nginx</p>
 <h3 id="经测试hook过程-未成功"><a href="#经测试hook过程-未成功" class="headerlink" title="经测试hook过程 未成功"></a>经测试hook过程 未成功</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hint: The &#x27;hooks/post-receive&#x27; hook was ignored because it&#x27;s not set as executable.</span><br><span class="line">hint: You can disable this warning with `git config advice.ignoredHook false`.</span><br><span class="line">hint: The &#x27;hooks/post-update&#x27; hook was ignored because it&#x27;s not set as executable.</span><br><span class="line">hint: You can disable this warning with `git config advice.ignoredHook false`.</span><br><span class="line">To 139.196.185.25:/home/snorlax/git/hexo.git</span><br><span class="line">   888065a..5a2a84e  HEAD -&gt; main</span><br><span class="line">Branch &#x27;main&#x27; set up to track remote branch &#x27;main&#x27; from &#x27;git@139.196.185.25:/home/snorlax/git/hexo.git&#x27;.</span><br><span class="line">INFO  Deploy done: git</span><br></pre></td></tr></table></figure>
