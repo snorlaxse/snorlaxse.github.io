@@ -869,6 +869,12 @@ template {
 [hidden] {
   display: none;
 }
+body {
+  cursor: url("https://cdn.jsdelivr.net/gh/snorlaxse/jsDeliver/theme/cursor/ComixCursors-White/Comix_White_Pointer.cur"), default;
+}
+a:hover {
+  cursor: url("https://cdn.jsdelivr.net/gh/snorlaxse/jsDeliver/theme/cursor/ComixCursors-White/Comix_White_Link.cur"), pointer;
+}
 *,
 *::before,
 *::after {
