@@ -71,4 +71,11 @@
 <h3 id="hexo-asset-image-图片相对路径失效"><a href="#hexo-asset-image-图片相对路径失效" class="headerlink" title="hexo-asset-image 图片相对路径失效"></a>hexo-asset-image 图片相对路径失效</h3><p>修改 <code>package.json</code> 中的 <code>&quot;hexo-asset-image&quot;: &quot;^1.0.0&quot;</code>（版本过老） 为 <code>&quot;hexo-asset-image-for-hexo5&quot;: &quot;^2.0.0&quot;</code></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>hexo theme ocean</title>
+    <url>/2022/04/12/hexo-theme-ocean/</url>
+    <content><![CDATA[<p>传送门：<br><a href="https://github.com/zhwangart/hexo-theme-ocean">Github  hexo-theme-ocean</a><br><a href="https://zhwangart.com/2018/11/30/Ocean/">Ocean 中文文档</a><br><a href="https://zhwangart.com/2019/07/02/Ocean-Issues/">关于 Ocean 使用中的问题</a></p>
+<h4 id="主页视频前置蒙版不透明度"><a href="#主页视频前置蒙版不透明度" class="headerlink" title="主页视频前置蒙版不透明度"></a>主页视频前置蒙版不透明度</h4><p><code>themes/ocean/source/css/_partial/ocean.styl</code> 中<br><code>.video-overlay</code>   <code>background-color rgba(178, 191, 204, .6)</code> → <code>  background-color rgba(178, 191, 204, .3)</code></p>
+<h4 id="相册功能"><a href="#相册功能" class="headerlink" title="相册功能"></a>相册功能</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">albums: [</span><br><span class="line">        [&quot;1&quot;, &quot;https://cdn.jsdelivr.net/gh/honjun/cdn@1.4/img/banner/about.jpg&quot;],	# 线上链接</span><br><span class="line">        [&quot;2&quot;, &quot;gallery/00.jpg&quot;],		# 本地路径</span><br><span class="line">        [&quot;3&quot;, &quot;gallery/01.jpg&quot;],</span><br><span class="line">        [&quot;4&quot;, &quot;gallery/02.jpg&quot;],</span><br><span class="line">        ]</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
 </search>
