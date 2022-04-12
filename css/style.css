@@ -1073,15 +1073,15 @@ img {
   margin-right: 0;
 }
 .content.on {
-  transform: translateX(-10rem);
+  transform: translateX(-8rem);
 }
 .sidebar {
   position: fixed;
   z-index: 9;
   top: 0;
-  right: -10rem;
+  right: -8rem;
   bottom: 0;
-  width: 10rem;
+  width: 8rem;
   background-color: #f4f4f4;
 }
 .sidebar.on {
@@ -1090,7 +1090,7 @@ img {
 .navbar-toggle {
   position: absolute;
   top: 1.5rem;
-  right: 11.5rem;
+  right: 9.5rem;
   padding: 0.5rem 1rem;
   border: none;
   -webkit-border-radius: 0.4rem;
@@ -1130,7 +1130,7 @@ img {
     margin-bottom: 6rem;
   }
   .content {
-    margin-right: 10rem;
+    margin-right: 8rem;
   }
   .sidebar {
     right: 0;
@@ -1273,7 +1273,7 @@ img {
 .search-form-wrap {
   position: fixed;
   top: -100%;
-  right: 10rem;
+  right: 8rem;
   left: 0;
   opacity: 0;
   transition: 0.3s;
@@ -1647,7 +1647,7 @@ a.toc-link {
 .is-position-fixed {
   position: fixed !important;
   top: 0;
-  right: 10rem;
+  right: 8rem;
 }
 .is-active-link {
   font-weight: 700;
