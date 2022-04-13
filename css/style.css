@@ -1126,18 +1126,8 @@ img {
   display: none;
 }
 @media (min-width: 768px) {
-  .jumbotron {
-    margin-bottom: 6rem;
-  }
-  .content {
-    margin-right: 8rem;
-  }
   .sidebar {
-    right: 0;
     background-color: #fff;
-  }
-  .navbar-toggle {
-    display: none;
   }
   .wrap,
   .outer {
