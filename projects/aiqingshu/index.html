@@ -17,6 +17,8 @@
         <script type="text/javascript" src="./public/love.js" charset="utf-8"></script>         
 
     </head>
+
+
     <body>
         <div id="main">
             <div id="error">亲，您使用的浏览器无法支持即将显示的内容，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)浏览器哟~</div>
@@ -31,18 +33,23 @@
                     <span class="say">由山野到书房。</span><br><br><br>
                     <!-- <span class="say">只要最后是你，</span><br><br>
                     <span class="say">就好 </span><br><br> -->
-                    <span class="say"><span class="space"></span> -- Yours.</span>
+                    <span class="say"><span class="space"></span> -- Yours, 贪吃的卡比兽.</span>
                     </div>
                 </div>
                 <div id="clock-box">
                     <a href="https://weibo.com/u/5725411710" target="_blank">@帅哥很有才</a> 与 <a href="https://weibo.com/u/5684632623" target="_blank">@仙女没脚踝</a> 在一起的
                         <div id="clock"></div>
                 </div>
+                <iframe style="position:relative; top:820px; float:left; left:780px;" frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id=536622304&auto=1&height=66"></iframe>
+
                 <canvas id="canvas" width="1100" height="680"></canvas>
             </div>
             <!-- <audio src="music.mp3" autoplay="autoplay"></audio> -->
+            <!-- <audio src="http://music.163.com/outchain/player?type=2&id=536622304&auto=1"" autoplay="autoplay"></audio> -->
+
+
         </div>
-    
+        
     <script>
     </script>
 
@@ -54,6 +61,7 @@
             audio.volume = 0.5;
             audio.play();
         })
+
         var canvas = $('#canvas');
 
         if (!canvas[0].getContext) {
