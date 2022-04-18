@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>3D建模</title>
+    <url>/2022/04/16/3D%E5%BB%BA%E6%A8%A1/</url>
+    <content><![CDATA[<h2 id="建模软件"><a href="#建模软件" class="headerlink" title="建模软件"></a>建模软件</h2><p><a href="https://www.zhihu.com/question/288361117">c4d和Blender哪个好用，有什么区别吗？</a></p>
+<h3 id="c4d"><a href="#c4d" class="headerlink" title="c4d"></a>c4d</h3><h3 id="Blender"><a href="#Blender" class="headerlink" title="Blender"></a>Blender</h3><span id="more"></span>
+<h2 id="游戏引擎"><a href="#游戏引擎" class="headerlink" title="游戏引擎"></a>游戏引擎</h2><h3 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h3><h3 id="Unreal-Engine"><a href="#Unreal-Engine" class="headerlink" title="Unreal Engine"></a>Unreal Engine</h3><p><a href="https://www.therookies.co/entries/14856">[UE5] Pokemon Modular Village fanart</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Demo</title>
+    <url>/2022/04/12/Demo/</url>
+    <content><![CDATA[<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p><a href="https://snorlax-chunbao.vercel.app/">Vercel-大西瓜</a></p>
+<span id="more"></span>
+
+<h2 id="WANTED"><a href="#WANTED" class="headerlink" title="WANTED"></a>WANTED</h2><h3 id="snorlax-机器学习包"><a href="#snorlax-机器学习包" class="headerlink" title="snorlax - 机器学习包"></a>snorlax - 机器学习包</h3><p>狂补 机器学习知识</p>
+<h3 id="刷题路线"><a href="#刷题路线" class="headerlink" title="刷题路线"></a>刷题路线</h3><h3 id="ECS-小程序"><a href="#ECS-小程序" class="headerlink" title="ECS 小程序"></a>ECS 小程序</h3><p><a href="https://github.com/xiaoyindong/christmas">https://github.com/xiaoyindong/christmas</a>  类似h5动画</p>
+<p><a href="https://github.com/Nauyusli/EverydayWechat">陪女友聊天机器人</a><br><a href="https://github.com/sfyc23/EverydayWechat">陪女友聊天机器人 Python3</a></p>
+<h3 id="学英语"><a href="#学英语" class="headerlink" title="学英语"></a>学英语</h3><ul>
+<li>英文字幕自动切分 语句级重复  </li>
+<li>进阶：相似语义 视频检索</li>
+</ul>
+<h3 id="脸型分类"><a href="#脸型分类" class="headerlink" title="脸型分类"></a>脸型分类</h3><ul>
+<li>深度学习 实现</li>
+<li>进阶：适配发型</li>
+</ul>
+<h3 id="AR特效"><a href="#AR特效" class="headerlink" title="AR特效"></a>AR特效</h3><ul>
+<li>宝可梦现场特效</li>
+</ul>
+<h3 id="人体数字建模"><a href="#人体数字建模" class="headerlink" title="人体数字建模"></a>人体数字建模</h3>]]></content>
+  </entry>
+  <entry>
     <title>Awesome Demo</title>
     <url>/2020/05/15/Awesome-Demo/</url>
     <content><![CDATA[<h3 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h3><h4 id="handtrack-js"><a href="#handtrack-js" class="headerlink" title="handtrack.js"></a><a href="https://github.com/victordibia/handtrack.js/">handtrack.js</a></h4><p><img src="https://img.shields.io/github/stars/victordibia/handtrack.js?style=social" alt="GitHub stars"></p>
@@ -72,36 +102,6 @@
 <li><a href="https://blog.csdn.net/weixin_41187842/article/details/96464926">获取github项目star的数量</a></li>
 </ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title>3D建模</title>
-    <url>/2022/04/16/3D%E5%BB%BA%E6%A8%A1/</url>
-    <content><![CDATA[<h2 id="建模软件"><a href="#建模软件" class="headerlink" title="建模软件"></a>建模软件</h2><p><a href="https://www.zhihu.com/question/288361117">c4d和Blender哪个好用，有什么区别吗？</a></p>
-<h3 id="c4d"><a href="#c4d" class="headerlink" title="c4d"></a>c4d</h3><h3 id="Blender"><a href="#Blender" class="headerlink" title="Blender"></a>Blender</h3><span id="more"></span>
-<h2 id="游戏引擎"><a href="#游戏引擎" class="headerlink" title="游戏引擎"></a>游戏引擎</h2><h3 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h3><h3 id="Unreal-Engine"><a href="#Unreal-Engine" class="headerlink" title="Unreal Engine"></a>Unreal Engine</h3><p><a href="https://www.therookies.co/entries/14856">[UE5] Pokemon Modular Village fanart</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Demo</title>
-    <url>/2022/04/12/Demo/</url>
-    <content><![CDATA[<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p><a href="https://snorlax-chunbao.vercel.app/">Vercel-大西瓜</a></p>
-<span id="more"></span>
-
-<h2 id="WANTED"><a href="#WANTED" class="headerlink" title="WANTED"></a>WANTED</h2><h3 id="snorlax-机器学习包"><a href="#snorlax-机器学习包" class="headerlink" title="snorlax - 机器学习包"></a>snorlax - 机器学习包</h3><p>狂补 机器学习知识</p>
-<h3 id="刷题路线"><a href="#刷题路线" class="headerlink" title="刷题路线"></a>刷题路线</h3><h3 id="ECS-小程序"><a href="#ECS-小程序" class="headerlink" title="ECS 小程序"></a>ECS 小程序</h3><p><a href="https://github.com/xiaoyindong/christmas">https://github.com/xiaoyindong/christmas</a>  类似h5动画</p>
-<p><a href="https://github.com/Nauyusli/EverydayWechat">陪女友聊天机器人</a><br><a href="https://github.com/sfyc23/EverydayWechat">陪女友聊天机器人 Python3</a></p>
-<h3 id="学英语"><a href="#学英语" class="headerlink" title="学英语"></a>学英语</h3><ul>
-<li>英文字幕自动切分 语句级重复  </li>
-<li>进阶：相似语义 视频检索</li>
-</ul>
-<h3 id="脸型分类"><a href="#脸型分类" class="headerlink" title="脸型分类"></a>脸型分类</h3><ul>
-<li>深度学习 实现</li>
-<li>进阶：适配发型</li>
-</ul>
-<h3 id="AR特效"><a href="#AR特效" class="headerlink" title="AR特效"></a>AR特效</h3><ul>
-<li>宝可梦现场特效</li>
-</ul>
-<h3 id="人体数字建模"><a href="#人体数字建模" class="headerlink" title="人体数字建模"></a>人体数字建模</h3>]]></content>
   </entry>
   <entry>
     <title>Dragon-Raja</title>
