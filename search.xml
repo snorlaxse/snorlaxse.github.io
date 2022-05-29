@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>3D建模</title>
-    <url>/2022/04/16/3D%E5%BB%BA%E6%A8%A1/</url>
-    <content><![CDATA[<h2 id="建模软件"><a href="#建模软件" class="headerlink" title="建模软件"></a>建模软件</h2><p><a href="https://www.zhihu.com/question/288361117">c4d和Blender哪个好用，有什么区别吗？</a></p>
-<h3 id="c4d"><a href="#c4d" class="headerlink" title="c4d"></a>c4d</h3><h3 id="Blender"><a href="#Blender" class="headerlink" title="Blender"></a>Blender</h3><span id="more"></span>
-<h2 id="游戏引擎"><a href="#游戏引擎" class="headerlink" title="游戏引擎"></a>游戏引擎</h2><h3 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h3><h3 id="Unreal-Engine"><a href="#Unreal-Engine" class="headerlink" title="Unreal Engine"></a>Unreal Engine</h3><p><a href="https://www.therookies.co/entries/14856">[UE5] Pokemon Modular Village fanart</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Awesome Demo</title>
     <url>/2020/05/15/Awesome-Demo/</url>
     <content><![CDATA[<h3 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h3><h4 id="handtrack-js"><a href="#handtrack-js" class="headerlink" title="handtrack.js"></a><a href="https://github.com/victordibia/handtrack.js/">handtrack.js</a></h4><p><img src="https://img.shields.io/github/stars/victordibia/handtrack.js?style=social" alt="GitHub stars"></p>
@@ -82,6 +74,24 @@
 ]]></content>
   </entry>
   <entry>
+    <title>3D建模</title>
+    <url>/2022/04/16/3D%E5%BB%BA%E6%A8%A1/</url>
+    <content><![CDATA[<h2 id="建模软件"><a href="#建模软件" class="headerlink" title="建模软件"></a>建模软件</h2><p><a href="https://www.zhihu.com/question/288361117">c4d和Blender哪个好用，有什么区别吗？</a></p>
+<h3 id="c4d"><a href="#c4d" class="headerlink" title="c4d"></a>c4d</h3><h3 id="Blender"><a href="#Blender" class="headerlink" title="Blender"></a>Blender</h3><span id="more"></span>
+<h2 id="游戏引擎"><a href="#游戏引擎" class="headerlink" title="游戏引擎"></a>游戏引擎</h2><h3 id="Unity"><a href="#Unity" class="headerlink" title="Unity"></a>Unity</h3><h3 id="Unreal-Engine"><a href="#Unreal-Engine" class="headerlink" title="Unreal Engine"></a>Unreal Engine</h3><p><a href="https://www.therookies.co/entries/14856">[UE5] Pokemon Modular Village fanart</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Marks</title>
+    <url>/2022/04/12/Marks/</url>
+    <content><![CDATA[<h2 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h2><p>《机器学习-公式推导与代码实现》</p>
+<span id="more"></span>
+
+<h2 id="有用的鸡汤"><a href="#有用的鸡汤" class="headerlink" title="有用的鸡汤"></a>有用的鸡汤</h2><p>百度（科技公司）的技术实力和技术储备 国内Top3</p>
+<h2 id="学习方向"><a href="#学习方向" class="headerlink" title="学习方向"></a>学习方向</h2><p>1、基础方面可以学习下git、linux命令、shell脚本、vim工具、以及c++（11&#x2F;14&#x2F;17）。<br>2、大数据处理相关工具学习和使用，Hadoop MapReduce，Spark等。<br>3、机器学习方面：Paddle框架学习和应用实践，最新的一些预训练模型可以学习一下; Xgboost、Gbrank相关模型原理可以学习一下。<br>4、推荐看下信息检索导论书籍， 可以提前学一些自然语言处理相关基础知识。<br>5、搜索引擎的原理，可以找些书籍(自制搜索引擎等)大体看看。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>Demo</title>
     <url>/2022/04/12/Demo/</url>
     <content><![CDATA[<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p><a href="https://snorlax-chunbao.vercel.app/">Vercel-大西瓜</a></p>
@@ -125,40 +135,10 @@
 <h2 id="奥丁之渊"><a href="#奥丁之渊" class="headerlink" title="奥丁之渊"></a>奥丁之渊</h2><h2 id="悼亡者的归来"><a href="#悼亡者的归来" class="headerlink" title="悼亡者的归来"></a>悼亡者的归来</h2>]]></content>
   </entry>
   <entry>
-    <title>Marks</title>
-    <url>/2022/04/12/Marks/</url>
-    <content><![CDATA[<h2 id="书籍"><a href="#书籍" class="headerlink" title="书籍"></a>书籍</h2><p>《机器学习-公式推导与代码实现》</p>
-<span id="more"></span>
-
-<h2 id="有用的鸡汤"><a href="#有用的鸡汤" class="headerlink" title="有用的鸡汤"></a>有用的鸡汤</h2><p>百度（科技公司）的技术实力和技术储备 国内Top3</p>
-<h2 id="学习方向"><a href="#学习方向" class="headerlink" title="学习方向"></a>学习方向</h2><p>1、基础方面可以学习下git、linux命令、shell脚本、vim工具、以及c++（11&#x2F;14&#x2F;17）。<br>2、大数据处理相关工具学习和使用，Hadoop MapReduce，Spark等。<br>3、机器学习方面：Paddle框架学习和应用实践，最新的一些预训练模型可以学习一下; Xgboost、Gbrank相关模型原理可以学习一下。<br>4、推荐看下信息检索导论书籍， 可以提前学一些自然语言处理相关基础知识。<br>5、搜索引擎的原理，可以找些书籍(自制搜索引擎等)大体看看。</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Movies</title>
     <url>/2022/04/28/Movies/</url>
     <content><![CDATA[<p>《王者之旅》 （Searching for Bobby Fischer）</p>
 <p>《社交网络》</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/03/28/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<span id="more"></span> 
-
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -214,6 +194,26 @@
 
 
 
+]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/03/28/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span> 
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
   <entry>
