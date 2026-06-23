@@ -1010,6 +1010,11 @@ img {
   display: block;
   margin: auto;
 }
+.article-entry img.inline-badge {
+  display: inline-block;
+  margin: 0;
+  vertical-align: text-bottom;
+}
 .article-entry iframe {
   border: none;
 }
