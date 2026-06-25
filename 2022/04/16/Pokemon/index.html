@@ -276,11 +276,29 @@
 
 </html>
 
-<!-- 鼠标点击特效 之 爆炸红心效果-->
-<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
-<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/snorlaxse/jsDeliver/js/click/fireworks.js"></script>  
+<!-- Desktop-only visual effects. Disabled on mobile and WeChat to keep the page lightweight. -->
+<canvas class="fireworks desktop-effects" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;"></canvas>
+<script>
+  (function () {
+    var ua = navigator.userAgent || '';
+    var isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+    var isWeChat = /MicroMessenger/i.test(ua);
 
+    if (isMobile || isWeChat) {
+      var canvas = document.querySelector('.desktop-effects');
+      if (canvas) canvas.parentNode.removeChild(canvas);
+      return;
+    }
 
-<!-- 樱花飘落特效 -->
-<script src="https://cdn.jsdelivr.net/gh/snorlaxse/jsDeliver/js/sakura.js"></script>
+    function loadScript(src) {
+      var script = document.createElement('script');
+      script.src = src;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
+    loadScript('https://cdn.bootcdn.net/ajax/libs/animejs/2.2.0/anime.min.js');
+    loadScript('https://cdn.jsdelivr.net/gh/snorlaxse/jsDeliver/js/click/fireworks.js');
+    loadScript('https://cdn.jsdelivr.net/gh/snorlaxse/jsDeliver/js/sakura.js');
+  })();
+</script>
