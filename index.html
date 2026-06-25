@@ -55,59 +55,6 @@
     </div>
   </div>
 </section>
-<script>
-  (function () {
-    function replay(video) {
-      video.currentTime = 0;
-      resume(video);
-    }
-
-    function resume(video) {
-      var play = video.play();
-      if (play && play.catch) play.catch(function () {});
-    }
-
-    function bindOceanVideo() {
-      var video = document.getElementById('ocean-video');
-      if (!video) return;
-
-      video.loop = true;
-      video.muted = true;
-      video.setAttribute('loop', '');
-      video.setAttribute('muted', '');
-
-      resume(video);
-
-      video.addEventListener('ended', function () {
-        replay(video);
-      });
-
-      video.addEventListener('timeupdate', function () {
-        if (video.duration && video.currentTime >= video.duration - 0.1) {
-          replay(video);
-        }
-      });
-
-      video.addEventListener('pause', function () {
-        if (video.duration && video.currentTime >= video.duration - 0.1) {
-          replay(video);
-        }
-      });
-
-      document.addEventListener('visibilitychange', function () {
-        if (!document.hidden && video.paused) {
-          resume(video);
-        }
-      });
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', bindOceanVideo);
-    } else {
-      bindOceanVideo();
-    }
-  })();
-</script>
 
 <div id="landingpage">
   <section class="outer">
