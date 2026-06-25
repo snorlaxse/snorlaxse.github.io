@@ -38,9 +38,8 @@
     </div>
     
     <div class="video-media">
-      <video playsinline="" autoplay="" loop="" muted="" data-autoplay="" onended="this.currentTime=0;this.play();" poster="/images/ocean/ocean.png"
+      <video id="ocean-video" playsinline="" autoplay="" loop="" muted="" data-autoplay="" poster="/images/ocean/ocean.png"
         x5-video-player-type="h5">
-        <source src="/images/ocean/ocean-lite.webm" type="video/webm">
         <source src="/images/ocean/ocean-lite.mp4" type="video/mp4">
         <p>Your user agent does not support the HTML5 Video element.</p>
       </video>
@@ -56,6 +55,59 @@
     </div>
   </div>
 </section>
+<script>
+  (function () {
+    function replay(video) {
+      video.currentTime = 0;
+      resume(video);
+    }
+
+    function resume(video) {
+      var play = video.play();
+      if (play && play.catch) play.catch(function () {});
+    }
+
+    function bindOceanVideo() {
+      var video = document.getElementById('ocean-video');
+      if (!video) return;
+
+      video.loop = true;
+      video.muted = true;
+      video.setAttribute('loop', '');
+      video.setAttribute('muted', '');
+
+      resume(video);
+
+      video.addEventListener('ended', function () {
+        replay(video);
+      });
+
+      video.addEventListener('timeupdate', function () {
+        if (video.duration && video.currentTime >= video.duration - 0.1) {
+          replay(video);
+        }
+      });
+
+      video.addEventListener('pause', function () {
+        if (video.duration && video.currentTime >= video.duration - 0.1) {
+          replay(video);
+        }
+      });
+
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden && video.paused) {
+          resume(video);
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bindOceanVideo);
+    } else {
+      bindOceanVideo();
+    }
+  })();
+</script>
 
 <div id="landingpage">
   <section class="outer">
@@ -103,7 +155,7 @@
   <div class="article-gallery-photos">
     
     
-    <a class="article-gallery-img" href="/2022/04/12/Demo/" rel="gallery_cmqtoncpg0005evjo9qpn03tt">
+    <a class="article-gallery-img" href="/2022/04/12/Demo/" rel="gallery_cmqtpag6100059kjof4xr3mgf">
       <img src="https://cdn.jsdelivr.net/gh/snorlaxse/jsDeliver/cover/gundam03.jpg" itemprop="image">
     </a>
     
@@ -124,7 +176,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snorlaxse.github.io/2022/04/12/Demo/" data-id="cmqtoncpg0005evjo9qpn03tt" class="article-share-link">
+      <a data-url="http://snorlaxse.github.io/2022/04/12/Demo/" data-id="cmqtpag6100059kjof4xr3mgf" class="article-share-link">
         分享
       </a>
       
@@ -180,7 +232,7 @@
   <div class="article-gallery-photos">
     
     
-    <a class="article-gallery-img" href="/2020/05/15/Awesome-Demo/" rel="gallery_cmqtoncpe0003evjodche8q5c">
+    <a class="article-gallery-img" href="/2020/05/15/Awesome-Demo/" rel="gallery_cmqtpag5w00039kjofpsmf2bn">
       <img src="https://cdn.jsdelivr.net/gh/snorlaxse/jsDeliver/cover/gundam02.jpg" itemprop="image">
     </a>
     
@@ -201,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://snorlaxse.github.io/2020/05/15/Awesome-Demo/" data-id="cmqtoncpe0003evjodche8q5c" class="article-share-link">
+      <a data-url="http://snorlaxse.github.io/2020/05/15/Awesome-Demo/" data-id="cmqtpag5w00039kjofpsmf2bn" class="article-share-link">
         分享
       </a>
       
