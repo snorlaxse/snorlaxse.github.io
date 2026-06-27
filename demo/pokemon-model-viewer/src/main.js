@@ -24,6 +24,11 @@ const spinAxisInput = document.querySelector('#spinAxisInput');
 const lightInput = document.querySelector('#lightInput');
 const dropzone = document.querySelector('#dropzone');
 const fileInput = document.querySelector('#fileInput');
+const gestureButton = document.querySelector('#gestureButton');
+const gesturePanel = document.querySelector('#gesturePanel');
+const gestureVideo = document.querySelector('#gestureVideo');
+const gestureCanvas = document.querySelector('#gestureCanvas');
+const gestureStatus = document.querySelector('#gestureStatus');
 
 let models = [];
 let activeUrl = '';
@@ -31,6 +36,20 @@ let currentObject = null;
 let currentMixer = null;
 let currentFrame = null;
 let lastFrameTime = 0;
+let handLandmarker = null;
+let gestureStream = null;
+let gestureAnimationFrame = 0;
+let gestureRunning = false;
+let gestureLastVideoTime = -1;
+let gestureLastCenter = null;
+let gestureLastPinchDistance = null;
+let gestureScaleMode = false;
+let gesturePinchLatched = false;
+let gestureScaleReadyAt = 0;
+let gestureOpenPalmStart = 0;
+let gestureOpenPalmCenter = null;
+let gestureLastResetAt = 0;
+let gestureLastFistCenter = null;
 const manifestUrl = new URL('./models.json', window.location.href);
 manifestUrl.searchParams.set('v', '202606271725');
 
@@ -69,6 +88,10 @@ scene.add(ground);
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
   statusEl.style.color = isError ? 'var(--danger)' : 'var(--muted)';
+}
+
+function setGestureStatus(message) {
+  gestureStatus.textContent = message;
 }
 
 function formatBytes(bytes) {
@@ -176,6 +199,21 @@ function resetCamera() {
   camera.position.set(center.x + radius * 1.8, center.y + radius * 1.2, center.z + radius * 2.2);
   camera.near = Math.max(radius / 100, 0.01);
   camera.far = Math.max(radius * 100, 100);
+  camera.updateProjectionMatrix();
+  controls.update();
+}
+
+function zoomCamera(factor) {
+  if (!currentFrame) return;
+
+  const offset = camera.position.clone().sub(controls.target);
+  const distance = offset.length();
+  const minDistance = Math.max(currentFrame.radius * 0.45, 0.12);
+  const maxDistance = Math.max(currentFrame.radius * 8, 4);
+  const nextDistance = THREE.MathUtils.clamp(distance * factor, minDistance, maxDistance);
+
+  offset.setLength(nextDistance);
+  camera.position.copy(controls.target).add(offset);
   camera.updateProjectionMatrix();
   controls.update();
 }
@@ -364,6 +402,270 @@ function loadDefaultModel() {
   loadModel(defaultModel.url, defaultModel.path);
 }
 
+async function createHandLandmarker() {
+  if (handLandmarker) return handLandmarker;
+
+  const { FilesetResolver, HandLandmarker } = await import('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18');
+  const vision = await FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.18/wasm');
+
+  handLandmarker = await HandLandmarker.createFromOptions(vision, {
+    baseOptions: {
+      modelAssetPath: 'https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/1/hand_landmarker.task',
+      delegate: 'GPU'
+    },
+    runningMode: 'VIDEO',
+    numHands: 1
+  });
+
+  return handLandmarker;
+}
+
+function distance2d(a, b) {
+  return Math.hypot(a.x - b.x, a.y - b.y);
+}
+
+function getOpenPalmState(landmarks, center) {
+  const palm = landmarks[9];
+  const fingerTips = [landmarks[8], landmarks[12], landmarks[16], landmarks[20]];
+  const averageTipDistance = fingerTips.reduce((sum, tip) => sum + distance2d(tip, palm), 0) / fingerTips.length;
+  const isOpen = averageTipDistance > 0.25;
+  const isStable = !gestureOpenPalmCenter || distance2d(center, gestureOpenPalmCenter) < 0.035;
+
+  return { isOpen, isStable };
+}
+
+function getFistState(landmarks) {
+  const palm = landmarks[9];
+  const fingerTips = [landmarks[8], landmarks[12], landmarks[16], landmarks[20]];
+  const averageTipDistance = fingerTips.reduce((sum, tip) => sum + distance2d(tip, palm), 0) / fingerTips.length;
+
+  return {
+    isFist: averageTipDistance < 0.15
+  };
+}
+
+function getOpenPinchState(landmarks, pinchDistance) {
+  const palm = landmarks[9];
+  const otherTips = [landmarks[12], landmarks[16], landmarks[20]];
+  const otherAverageDistance = otherTips.reduce((sum, tip) => sum + distance2d(tip, palm), 0) / otherTips.length;
+
+  return {
+    isOpenPinch: pinchDistance < 0.065 && otherAverageDistance > 0.2
+  };
+}
+
+function resetRotateGestureState() {
+  gestureLastFistCenter = null;
+}
+
+function handleGestureLandmarks(landmarks) {
+  const wrist = landmarks[0];
+  const thumbTip = landmarks[4];
+  const indexTip = landmarks[8];
+  const middleBase = landmarks[9];
+  const center = {
+    x: 1 - (wrist.x + middleBase.x) / 2,
+    y: (wrist.y + middleBase.y) / 2
+  };
+  const pinchDistance = distance2d(thumbTip, indexTip);
+  const isPinched = pinchDistance < 0.065;
+  const isReleased = pinchDistance > 0.13;
+  const openPalm = getOpenPalmState(landmarks, center);
+  const fist = getFistState(landmarks);
+  const openPinch = getOpenPinchState(landmarks, pinchDistance);
+  const now = Date.now();
+
+  if (!currentObject) {
+    setGestureStatus('Load a model first');
+    return;
+  }
+
+  const canToggleScaleMode = gestureScaleMode ? isPinched : openPinch.isOpenPinch;
+
+  if (canToggleScaleMode && !gesturePinchLatched) {
+    gestureScaleMode = !gestureScaleMode;
+    gesturePinchLatched = true;
+    gestureLastPinchDistance = gestureScaleMode ? pinchDistance : null;
+    gestureScaleReadyAt = gestureScaleMode ? now + 1000 : 0;
+    gestureLastCenter = null;
+    resetRotateGestureState();
+    gestureOpenPalmStart = 0;
+    gestureOpenPalmCenter = null;
+    setGestureStatus(gestureScaleMode ? 'Scale mode on: pinch distance controls size' : 'Scale mode off: make a fist and drag to rotate');
+    return;
+  }
+
+  if (isReleased) {
+    gesturePinchLatched = false;
+  }
+
+  if (gestureScaleMode) {
+    if (now < gestureScaleReadyAt) {
+      gestureLastPinchDistance = pinchDistance;
+      setGestureStatus('Scale mode: reposition fingers');
+    } else if (gestureLastPinchDistance !== null) {
+      const delta = pinchDistance - gestureLastPinchDistance;
+      const factor = THREE.MathUtils.clamp(1 - delta * 6, 0.86, 1.14);
+      zoomCamera(factor);
+      setGestureStatus('Scale mode: closer shrinks, apart enlarges');
+    } else {
+      setGestureStatus('Scale mode: closer shrinks, apart enlarges');
+    }
+  } else {
+    if (openPalm.isOpen && openPalm.isStable) {
+      if (!gestureOpenPalmStart) {
+        gestureOpenPalmStart = now;
+        gestureOpenPalmCenter = center;
+      }
+
+      if (now - gestureOpenPalmStart > 1000 && now - gestureLastResetAt > 1800) {
+        if (currentObject) currentObject.rotation.set(0, 0, 0);
+        resetCamera();
+        gestureLastResetAt = now;
+        gestureOpenPalmStart = 0;
+        gestureOpenPalmCenter = null;
+        setGestureStatus('Reset view');
+      } else {
+        setGestureStatus('Hold open palm to reset');
+      }
+    } else {
+      gestureOpenPalmStart = 0;
+      gestureOpenPalmCenter = openPalm.isOpen ? center : null;
+    }
+
+    if (fist.isFist && !openPalm.isOpen) {
+      if (gestureLastFistCenter) {
+        const dx = center.x - gestureLastFistCenter.x;
+        const dy = center.y - gestureLastFistCenter.y;
+        const distance = Math.hypot(dx, dy);
+
+        if (distance > 0.004) {
+          const intensity = THREE.MathUtils.clamp(distance * 28, 0.38, 2.2);
+          currentObject.rotation.y += dx * 7.0 * intensity;
+          currentObject.rotation.x += dy * 4.8 * intensity;
+        }
+      }
+      gestureLastFistCenter = center;
+      setGestureStatus('Fist drag: rotate');
+    } else if (!openPalm.isOpen) {
+      resetRotateGestureState();
+      setGestureStatus('Make a fist and drag to rotate');
+    }
+  }
+
+  gestureLastCenter = center;
+  gestureLastPinchDistance = pinchDistance;
+}
+
+function drawGestureLandmarks(landmarks = []) {
+  const context = gestureCanvas.getContext('2d');
+  const { videoWidth, videoHeight } = gestureVideo;
+  if (!videoWidth || !videoHeight) return;
+
+  gestureCanvas.width = videoWidth;
+  gestureCanvas.height = videoHeight;
+  context.clearRect(0, 0, gestureCanvas.width, gestureCanvas.height);
+  context.fillStyle = '#f3c64e';
+  context.strokeStyle = '#57b9ff';
+  context.lineWidth = 4;
+
+  for (const landmark of landmarks) {
+    const x = (1 - landmark.x) * gestureCanvas.width;
+    const y = landmark.y * gestureCanvas.height;
+    context.beginPath();
+    context.arc(x, y, 5, 0, Math.PI * 2);
+    context.fill();
+  }
+}
+
+async function predictGesture() {
+  if (!gestureRunning) return;
+
+  if (gestureVideo.currentTime !== gestureLastVideoTime) {
+    gestureLastVideoTime = gestureVideo.currentTime;
+    const result = handLandmarker.detectForVideo(gestureVideo, performance.now());
+    const [landmarks] = result.landmarks || [];
+
+    if (landmarks) {
+      handleGestureLandmarks(landmarks);
+      drawGestureLandmarks(landmarks);
+    } else {
+      gestureLastCenter = null;
+      resetRotateGestureState();
+      gestureLastPinchDistance = null;
+      gestureScaleMode = false;
+      gesturePinchLatched = false;
+      gestureScaleReadyAt = 0;
+      gestureOpenPalmStart = 0;
+      gestureOpenPalmCenter = null;
+      gestureLastResetAt = 0;
+      drawGestureLandmarks();
+      setGestureStatus('Show one hand to control');
+    }
+  }
+
+  gestureAnimationFrame = requestAnimationFrame(predictGesture);
+}
+
+async function startGestureControl() {
+  gestureButton.disabled = true;
+  setGestureStatus('Loading gesture model...');
+  gesturePanel.classList.remove('is-hidden');
+
+  try {
+    await createHandLandmarker();
+    gestureStream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: 'user',
+        width: { ideal: 640 },
+        height: { ideal: 480 }
+      }
+    });
+    gestureVideo.srcObject = gestureStream;
+    await gestureVideo.play();
+
+    gestureRunning = true;
+    gestureButton.classList.add('is-active');
+    gestureButton.setAttribute('aria-pressed', 'true');
+    setGestureStatus('Show one hand to control');
+    predictGesture();
+  } catch (error) {
+    console.error(error);
+    setGestureStatus('Gesture unavailable');
+    setStatus(`Could not start gesture control: ${error.message}`, true);
+    stopGestureControl();
+  } finally {
+    gestureButton.disabled = false;
+  }
+}
+
+function stopGestureControl() {
+  gestureRunning = false;
+  window.cancelAnimationFrame(gestureAnimationFrame);
+  gestureAnimationFrame = 0;
+  gestureLastVideoTime = -1;
+  gestureLastCenter = null;
+  resetRotateGestureState();
+  gestureLastPinchDistance = null;
+  gestureScaleMode = false;
+  gesturePinchLatched = false;
+  gestureScaleReadyAt = 0;
+  gestureOpenPalmStart = 0;
+  gestureOpenPalmCenter = null;
+  gestureLastResetAt = 0;
+
+  if (gestureStream) {
+    gestureStream.getTracks().forEach((track) => track.stop());
+    gestureStream = null;
+  }
+
+  gestureVideo.srcObject = null;
+  gesturePanel.classList.add('is-hidden');
+  gestureButton.classList.remove('is-active');
+  gestureButton.setAttribute('aria-pressed', 'false');
+  gestureButton.disabled = false;
+}
+
 async function refreshModels() {
   setStatus('Loading model catalog...');
   try {
@@ -454,6 +756,13 @@ function animate(time) {
 
 searchInput.addEventListener('input', renderModelList);
 refreshButton.addEventListener('click', refreshModels);
+gestureButton.addEventListener('click', () => {
+  if (gestureRunning) {
+    stopGestureControl();
+  } else {
+    startGestureControl();
+  }
+});
 resetButton.addEventListener('click', () => {
   if (currentObject) currentObject.rotation.set(0, 0, 0);
   resetCamera();
@@ -491,3 +800,4 @@ dropzone.addEventListener('drop', (event) => {
 
 refreshModels();
 requestAnimationFrame(animate);
+window.addEventListener('beforeunload', stopGestureControl);
