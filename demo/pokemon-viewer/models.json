@@ -1,4 +1,21 @@
 {
   "modelRoot": "public/models",
-  "models": []
+  "models": [
+    {
+      "name": "bedtime style wiggytuff.dae",
+      "path": "models/Mobile - Pokemon unite - Bedtime style Wiggytuff/bedtime style wiggytuff.dae",
+      "url": "models/Mobile - Pokemon unite - Bedtime style Wiggytuff/bedtime style wiggytuff.dae",
+      "size": 3554903,
+      "modifiedAt": "2026-06-27T08:48:55.192Z",
+      "extension": "dae"
+    },
+    {
+      "name": "bedtime style wiggytuff.fbx",
+      "path": "models/Mobile - Pokemon unite - Bedtime style Wiggytuff/bedtime style wiggytuff.fbx",
+      "url": "models/Mobile - Pokemon unite - Bedtime style Wiggytuff/bedtime style wiggytuff.fbx",
+      "size": 1283916,
+      "modifiedAt": "2026-06-27T08:48:55.223Z",
+      "extension": "fbx"
+    }
+  ]
 }
