@@ -357,6 +357,13 @@ function renderModelList() {
   }
 }
 
+function loadDefaultModel() {
+  if (activeUrl || !models.length) return;
+
+  const defaultModel = models.find((model) => model.extension === 'dae') || models[0];
+  loadModel(defaultModel.url, defaultModel.path);
+}
+
 async function refreshModels() {
   setStatus('Loading model catalog...');
   try {
@@ -366,7 +373,11 @@ async function refreshModels() {
     models = (data.models || []).map(normalizeModel);
     modelRootEl.textContent = data.modelRoot || manifestUrl.pathname;
     renderModelList();
-    setStatus(models.length ? `Found ${models.length} published model files.` : 'No published models found. Add files to public/models and update models.json.');
+    if (models.length) {
+      loadDefaultModel();
+    } else {
+      setStatus('No published models found. Add files to public/models and update models.json.');
+    }
   } catch (error) {
     await refreshModelsFromServer(error);
   }
@@ -380,7 +391,11 @@ async function refreshModelsFromServer(manifestError) {
     models = (data.models || []).map(normalizeModel);
     modelRootEl.textContent = data.exists ? data.modelRoot : `Missing: ${data.modelRoot}`;
     renderModelList();
-    setStatus(models.length ? `Found ${models.length} supported model files.` : 'No supported model files found.');
+    if (models.length) {
+      loadDefaultModel();
+    } else {
+      setStatus('No supported model files found.');
+    }
   } catch (serverError) {
     console.warn('Static manifest load failed:', manifestError);
     console.warn('Local model API load failed:', serverError);
