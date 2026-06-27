@@ -32,7 +32,7 @@ let currentMixer = null;
 let currentFrame = null;
 let lastFrameTime = 0;
 const manifestUrl = new URL('./models.json', window.location.href);
-manifestUrl.searchParams.set('v', '202606271650');
+manifestUrl.searchParams.set('v', '202606271725');
 
 const scene = new THREE.Scene();
 scene.background = null;
@@ -133,6 +133,15 @@ function prepareObject(object) {
       });
     }
   });
+}
+
+function applyDefaultOrientation(object, extension) {
+  if (extension !== 'dae') return;
+
+  object.rotation.x -= Math.PI / 2;
+  object.rotation.y += Math.PI;
+  object.rotation.z += Math.PI;
+  object.updateMatrixWorld(true);
 }
 
 function frameObject(object) {
@@ -248,6 +257,7 @@ async function parseLocalFile(file) {
     if (extension === 'dae') {
       const collada = await loadWith(new ColladaLoader(), objectUrl);
       startAnimations(collada.scene, collada.animations || []);
+      applyDefaultOrientation(collada.scene, extension);
       return collada.scene;
     }
     if (extension === 'stl') return modelFromGeometry(await loadWith(new STLLoader(), objectUrl), file.name);
@@ -296,6 +306,7 @@ async function loadModel(url, label = url) {
       const collada = await loadWith(new ColladaLoader(), url);
       object = collada.scene;
       startAnimations(object, collada.animations || []);
+      applyDefaultOrientation(object, extension);
     } else if (extension === 'stl') {
       object = modelFromGeometry(await loadWith(new STLLoader(), url), label);
     } else if (extension === 'ply') {
