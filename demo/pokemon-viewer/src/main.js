@@ -32,6 +32,7 @@ let currentMixer = null;
 let currentFrame = null;
 let lastFrameTime = 0;
 const manifestUrl = new URL('./models.json', window.location.href);
+manifestUrl.searchParams.set('v', '202606271650');
 
 const scene = new THREE.Scene();
 scene.background = null;
