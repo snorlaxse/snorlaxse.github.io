@@ -176,11 +176,7 @@ function frameObject(object) {
   const scale = 2.4 / maxDim;
 
   object.scale.multiplyScalar(scale);
-
-  const scaledBox = new THREE.Box3().setFromObject(object);
-  const scaledCenter = scaledBox.getCenter(new THREE.Vector3());
-  object.position.sub(scaledCenter);
-  object.position.y -= scaledBox.min.y;
+  object.updateMatrixWorld(true);
 
   const finalBox = new THREE.Box3().setFromObject(object);
   const finalSize = finalBox.getSize(new THREE.Vector3());
@@ -218,17 +214,18 @@ function zoomCamera(factor) {
   controls.update();
 }
 
-function createCenteredPivot(object) {
+function createGroundedPivot(object) {
   object.updateMatrixWorld(true);
   const box = new THREE.Box3().setFromObject(object);
   if (box.isEmpty()) return object;
 
   const center = box.getCenter(new THREE.Vector3());
+  const footOrigin = new THREE.Vector3(center.x, box.min.y, center.z);
   const pivot = new THREE.Group();
-  pivot.name = 'model-center-pivot';
-  pivot.position.copy(center);
-  object.position.sub(center);
+  pivot.name = 'model-ground-pivot';
+  object.position.sub(footOrigin);
   pivot.add(object);
+  pivot.updateMatrixWorld(true);
   return pivot;
 }
 
@@ -356,10 +353,10 @@ async function loadModel(url, label = url) {
     }
 
     prepareObject(object);
-    currentObject = createCenteredPivot(object);
+    currentObject = createGroundedPivot(object);
     scene.add(currentObject);
     frameObject(currentObject);
-    setStatus(`Loaded ${label}. Auto rotate spins the model around its center. Drag to rotate camera, scroll to zoom.`);
+    setStatus(`Loaded ${label}. Auto rotate spins the model around its foot origin. Drag to rotate camera, scroll to zoom.`);
   } catch (error) {
     console.error(error);
     setStatus(`Could not load ${label}: ${error.message}`, true);
@@ -721,11 +718,11 @@ async function handleFile(file) {
     activeUrl = '';
     const object = await parseLocalFile(file);
     prepareObject(object);
-    currentObject = createCenteredPivot(object);
+    currentObject = createGroundedPivot(object);
     scene.add(currentObject);
     frameObject(currentObject);
     renderModelList();
-    setStatus(`Loaded ${file.name}. Auto rotate spins the model around its center. For textures and linked files, use the model directory server list.`);
+    setStatus(`Loaded ${file.name}. Auto rotate spins the model around its foot origin. For textures and linked files, use the model directory server list.`);
   } catch (error) {
     console.error(error);
     setStatus(`Could not load ${file.name}: ${error.message}`, true);
