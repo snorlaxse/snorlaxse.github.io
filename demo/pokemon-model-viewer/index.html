@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Pokemon Model Viewer</title>
-    <link rel="stylesheet" href="./src/styles.css?v=5">
+    <link rel="stylesheet" href="./src/styles.css?v=6">
     <script type="importmap">
       {
         "imports": {
@@ -56,6 +56,12 @@
             <option value="x">X</option>
           </select>
         </label>
+        <label>
+          Animation
+          <select id="animationInput" disabled>
+            <option value="">None</option>
+          </select>
+        </label>
         <label><input id="wireframeInput" type="checkbox"> Wireframe</label>
         <label>
           Light
@@ -72,6 +78,6 @@
       <div class="status" id="status">Choose a model to begin.</div>
     </main>
 
-    <script type="module" src="./src/main.js?v=26"></script>
+    <script type="module" src="./src/main.js?v=37"></script>
   </body>
 </html>

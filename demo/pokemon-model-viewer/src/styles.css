@@ -247,6 +247,10 @@ canvas {
   color: var(--text);
 }
 
+#animationInput {
+  max-width: 230px;
+}
+
 .status {
   position: absolute;
   left: 16px;

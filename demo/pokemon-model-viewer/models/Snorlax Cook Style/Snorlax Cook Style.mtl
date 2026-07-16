@@ -1,0 +1,66 @@
+# Blender MTL File: 'None'
+# Material Count: 5
+
+newmtl mat_lob_014305A_lv3
+Ns 199.999995
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd t_d_lob_014305_lv3.png
+map_d t_d_lob_014305_lv3.png
+
+newmtl mat_lob_014305_lv3
+Ns 199.999995
+Ka 1.000000 1.000000 1.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Bump t_n_lob_014305_lv3.png
+map_Kd t_d_lob_014305_lv3.png
+map_d t_d_lob_014305_lv3.png
+
+newmtl mat_lob_0143body_lv3a
+Ns 199.999995
+Ka 1.000000 1.000000 1.000000
+Kd 0.990566 0.990566 0.990566
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Bump t_n_lob_0143body_lv3a.png
+map_Kd t_d_lob_0143body_lv3a.png
+map_d t_d_lob_0143body_lv3a.png
+
+newmtl mat_lob_0143eye_lv3a
+Ns 199.999995
+Ka 1.000000 1.000000 1.000000
+Kd 0.990566 0.990566 0.990566
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Bump t_n_default.png
+map_Kd t_d_lob_0143eye_lv3a.png
+map_d t_d_lob_0143eye_lv3a.png
+
+newmtl mat_lob_0143mouth_lv3a
+Ns 199.999995
+Ka 1.000000 1.000000 1.000000
+Kd 0.990566 0.990566 0.990566
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Bump t_n_default.png
+map_Kd t_d_lob_0143mouth_lv3a.png
+map_d t_d_lob_0143mouth_lv3a.png

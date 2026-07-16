@@ -10,11 +10,19 @@
       "extension": "dae"
     },
     {
-      "name": "bedtime style wiggytuff.fbx",
-      "path": "models/Mobile - Pokemon unite - Bedtime style Wiggytuff/bedtime style wiggytuff.fbx",
-      "url": "models/Mobile - Pokemon unite - Bedtime style Wiggytuff/bedtime style wiggytuff.fbx",
-      "size": 1283916,
-      "modifiedAt": "2026-06-27T08:48:55.223Z",
+      "name": "Snorlax Cook Style.dae",
+      "path": "models/Snorlax Cook Style/Snorlax Cook Style.dae",
+      "url": "models/Snorlax Cook Style/Snorlax Cook Style.dae",
+      "size": 4328932,
+      "modifiedAt": "2026-07-16T14:59:29.007Z",
+      "extension": "dae"
+    },
+    {
+      "name": "Snorlax Cook Style with anim.fbx",
+      "path": "models/Snorlax Cook Style/Snorlax Cook Style with anim.fbx",
+      "url": "models/Snorlax Cook Style/Snorlax Cook Style with anim.fbx",
+      "size": 4363660,
+      "modifiedAt": "2026-07-16T14:59:29.018Z",
       "extension": "fbx"
     }
   ]
